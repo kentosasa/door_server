@@ -1,6 +1,7 @@
 require 'sinatra'
 require 'sinatra/reloader'
 require 'arduino_firmata'
+
 get '/' do
   arduino = ArduinoFirmata.connect ARGV.shift
   5.times do
@@ -12,16 +13,16 @@ get '/' do
 end
 
 get '/open' do
-  arduino = ArduinoFirmata.connect ARGV.shift
-  angle = 180
+ arduino = ArduinoFirmata.connect ARGV.shift
+ angle = 180
   puts 'open'
   arduino.servo_write 13, angle
   "open door"
 end
 
 get '/close' do
-  arduino = ArduinoFirmata.connect ARGV.shift
-  angle = 0
+ arduino = ArduinoFirmata.connect ARGV.shift
+ angle = 0
   puts 'close'
   arduino.servo_write 13, angle
   "close door"
